@@ -10,9 +10,9 @@ export class ContactService {
 
   constructor() {
     this.contacts = [];
-    this.contacts.push(new Contact('Mikki', 'Hiiri'));
-    this.contacts.push(new Contact('Aku', 'Ankka'));
-    this.contacts.push(new Contact('Teppo', 'Tulppu'));
+    this.contacts.push(new Contact(1, 'Mikki', 'Hiiri'));
+    this.contacts.push(new Contact(2, 'Aku', 'Ankka'));
+    this.contacts.push(new Contact(3, 'Teppo', 'Tulppu'));
   }
 
   getContacts(): Contact[] {
