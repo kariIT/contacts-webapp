@@ -1,4 +1,4 @@
-<div *ngFor="let contact of contacts">
+<div *ngFor="let contact of contacts" (click)="onContactSelect(contact)">
  Name: {{contact.firstName}} {{contact.lastName}}
   <br>
  Address: {{contact.streetAddress}} // {{contact.city}} {{contact.postalCode}}
