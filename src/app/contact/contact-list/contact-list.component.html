@@ -1,10 +1,10 @@
 <div *ngFor="let contact of contacts" (click)="onContactSelect(contact)">
- Name: {{contact.firstName}} {{contact.lastName}}
-  <br>
+  <p> {{contact.id}}: {{contact.firstName}} {{contact.lastName}}</p>
+<!--  <br>
  Address: {{contact.streetAddress}} // {{contact.city}} {{contact.postalCode}}
   <br>
  Phone: {{contact.phoneNumber}}
   <br>
   Email: {{contact.emailAddress}}
-  <br><br>
+  <br><br> -->
 </div>

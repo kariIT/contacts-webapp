@@ -1,5 +1,38 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
-<router-outlet> </router-outlet>
-</div>
+<mat-sidenav-container class="cw-sidenav-container">
+  <mat-sidenav class="cw-sidenav" #sidenav align="start" [mode]="'over'" [opened]="false">
+    <!--Sidenav content-->
+    <div>
+      <div fxLayout="column" fxLayoutAlign="center center" class="cw-sidenav-user-area">
+        <div>
+          <mat-icon class="cw-sidenav-avatar" color="primary">account_circle</mat-icon>
+        </div>
+        <div>
+          <span class="cw-sidenav-text">EKOODI summer school</span>
+          <br>
+          <span fxLayoutAlign="center center" class="cw-sidenav-text">Joona Heinikari</span>
+        </div>
+      </div>
+      <div>
+        <span class="cw-sidenav-text">Sidenav content</span>
+      </div>
+    </div>
+  </mat-sidenav>
+  <div>
+    <!--App content-->
+    <mat-toolbar color="primary">
+      <!--Toolbar-->
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon class="mat-18">menu</mat-icon>
+      </button>
+      <span> Contact Application </span>
+    </mat-toolbar>
+    <div class="cw-app-container">
+      <!--App-->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-sidenav-container>
+
+
+
 
