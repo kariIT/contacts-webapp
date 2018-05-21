@@ -32,3 +32,7 @@
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.cw-sidenav-content {
+  overflow: hidden;
+}
+

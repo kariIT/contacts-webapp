@@ -1,7 +1,15 @@
 ///<reference path="../../../../node_modules/@angular/material/sidenav/typings/sidenav-module.d.ts"/>
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatDividerModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDividerModule,
+  MatIconModule, MatInputModule,
+  MatListModule,
+  MatSidenavModule,
+  MatToolbarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const materialModules = [
@@ -12,7 +20,9 @@ const materialModules = [
   MatToolbarModule,
   MatIconModule,
   MatDividerModule,
-  MatListModule
+  MatListModule,
+  MatCardModule,
+  MatInputModule
 ];
 
 @NgModule({
