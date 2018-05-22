@@ -10,47 +10,50 @@
         <input matInput [(ngModel)]="contact.firstName"
                type="text"
                required
-               placeholder="First name">
+               placeholder="First name"
+               [readonly]="!editingEnabled">
       </mat-form-field>
       <mat-form-field floatPlaceholder="auto">
         <input matInput [(ngModel)]="contact.lastName"
                type="text"
                required
-               placeholder="Last name">
+               placeholder="Last name"
+               [readonly]="!editingEnabled">
       </mat-form-field>
       <mat-form-field floatPlaceholder="auto">
         <input matInput [(ngModel)]="contact.streetAddress"
                type="text"
-
-               placeholder="Street address">
+               placeholder="Street address"
+               [readonly]="!editingEnabled">
       </mat-form-field>
       <mat-form-field floatPlaceholder="auto">
         <input matInput [(ngModel)]="contact.city"
                type="text"
-
-               placeholder="City">
+               placeholder="City"
+               [readonly]="!editingEnabled">
       </mat-form-field>
       <mat-form-field floatPlaceholder="auto">
         <input matInput [(ngModel)]="contact.postalCode"
                type="text"
-
-               placeholder="Postal code">
+               placeholder="Postal code"
+               [readonly]="!editingEnabled">
       </mat-form-field>
       <mat-form-field floatPlaceholder="auto">
         <input matInput [(ngModel)]="contact.phoneNumber"
                type="text"
                required
-               placeholder="Phone">
+               placeholder="Phone"
+               [readonly]="!editingEnabled">
       </mat-form-field>
       <mat-form-field floatPlaceholder="auto">
         <input matInput [(ngModel)]="contact.emailAddress"
                type="text"
-
-               placeholder="Email">
+               placeholder="Email"
+               [readonly]="!editingEnabled">
       </mat-form-field>
     </div>
   </div>
 </mat-card>
-<button mat-fab (click)="onSave()" class="cw-fab">
+<button mat-fab (click)="onSave()" class="cw-fab" [disabled]="!editingEnabled">
   <mat-icon>check</mat-icon>
 </button>

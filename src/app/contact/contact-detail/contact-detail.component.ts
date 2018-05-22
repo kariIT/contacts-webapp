@@ -16,21 +16,26 @@ import {ToolbarAction} from '../../ui/toolbar/toolbar-action';
 export class ContactDetailComponent implements OnInit {
 
   contact: Contact;
+  editingEnabled: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute,
               private contactService: ContactService, private toolbar: ToolbarService) {
     this.contact = new Contact();
+    this.editingEnabled = false; console.log(this.editingEnabled);
   }
 
   ngOnInit() {
     this.toolbar.toolbarOptions.next(
-      new ToolbarOptions('Contact', [new ToolbarAction(this.onEdit, 'edit')]));
+      new ToolbarOptions('Contact', [new ToolbarAction(this.onEdit.bind(this), 'edit')]));
 
     const contactId = this.route.snapshot.paramMap.get('id');
     // console.log(contactId);
 
     if (contactId == null) {
+      // Create contact
       return;
+    } else {
+      // View/Edit contact
     }
 
     this.contactService.getContactById(contactId).subscribe(response => {
@@ -53,6 +58,9 @@ export class ContactDetailComponent implements OnInit {
   }
 
   onEdit(): void {
+    console.log(this.editingEnabled);
     console.log('TODO activate/deactivate edit mode.');
+    this.editingEnabled = !this.editingEnabled;
+    console.log(this.editingEnabled);
   }
 }
