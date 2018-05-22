@@ -20,4 +20,7 @@ export class ContactService {
   getContactById(id): Observable<Contact> {
     return this.contactHttpService.getById(id);
   }
+  updateContact(contact): Observable<Contact> {
+    return this.contactHttpService.put(contact);
+  }
 }

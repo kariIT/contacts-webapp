@@ -17,6 +17,7 @@ export class ContactDetailComponent implements OnInit {
 
   contact: Contact;
   editingEnabled: boolean;
+  contactId: any;
 
   constructor(private router: Router, private route: ActivatedRoute,
               private contactService: ContactService, private toolbar: ToolbarService) {
@@ -28,16 +29,16 @@ export class ContactDetailComponent implements OnInit {
     this.toolbar.toolbarOptions.next(
       new ToolbarOptions('Contact', [new ToolbarAction(this.onEdit.bind(this), 'edit')]));
 
-    const contactId = this.route.snapshot.paramMap.get('id');
+    this.contactId = this.route.snapshot.paramMap.get('id');
     let toolbarActions: ToolbarAction[];
 
-    if (contactId == null) {
+    if (this.contactId == null) {
       // Create contact
       toolbarActions = [];
     } else {
       // View/Edit contact
       toolbarActions = [new ToolbarAction(this.onEdit.bind(this), 'edit')];
-      this.contactService.getContactById(contactId).subscribe(response => {
+      this.contactService.getContactById(this.contactId).subscribe(response => {
           this.contact = response;
           console.log(this.contact);
         }, error => {
@@ -58,6 +59,14 @@ export class ContactDetailComponent implements OnInit {
 
   onSave(): void {
     console.log('TODO Save.');
+    if (this.contactId == null) {
+      // Create contact
+    } else {
+      // Edit contact
+      this.contactService.updateContact(this.contact).subscribe(response => {
+        console.log(response);
+      });
+    }
   }
 
   onEdit(): void {
