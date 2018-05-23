@@ -23,4 +23,10 @@ export class ContactService {
   updateContact(contact): Observable<Contact> {
     return this.contactHttpService.put(contact);
   }
+  createContact(contact): Observable<Contact> {
+    return this.contactHttpService.post(contact);
+  }
+  deleteContact(contact): Observable<Contact> {
+    return this.contactHttpService.delete(contact);
+  }
 }

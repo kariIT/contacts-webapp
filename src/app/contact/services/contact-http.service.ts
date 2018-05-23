@@ -33,4 +33,17 @@ export class ContactHttpService {
         return response as Contact;
       }));
   }
+
+  post(contact): Observable<Contact> {
+    return this.httpClient.post(this.url, contact)
+      .pipe(map(response => {
+        return response as Contact;
+      }));
+  }
+
+  delete(contact): Observable<any> {
+    return this.httpClient.delete(this.url + '/' + contact.id).pipe(map(response => {
+      return response as Contact;
+    }));
+  }
 }

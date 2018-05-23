@@ -27,7 +27,7 @@ export class ContactDetailComponent implements OnInit {
 
   ngOnInit() {
     this.toolbar.toolbarOptions.next(
-      new ToolbarOptions('Contact', [new ToolbarAction(this.onEdit.bind(this), 'edit')]));
+      new ToolbarOptions(false, 'Contact', [new ToolbarAction(this.onEdit.bind(this), 'edit')]));
 
     this.contactId = this.route.snapshot.paramMap.get('id');
     let toolbarActions: ToolbarAction[];
@@ -37,34 +37,38 @@ export class ContactDetailComponent implements OnInit {
       toolbarActions = [];
     } else {
       // View/Edit contact
+      this.editingEnabled = false;
       toolbarActions = [new ToolbarAction(this.onEdit.bind(this), 'edit')];
       this.contactService.getContactById(this.contactId).subscribe(response => {
-          this.contact = response;
-          console.log(this.contact);
-        }, error => {
-          console.error('Getting contact failed.');
-          console.error(error);
-          this.router.navigate(['/contacts']);
-        }
-      );
+        this.contact = response;
+        console.log(this.contact);
+      }, error => {
+        console.error('Getting contact failed.');
+        console.error(error);
+        this.router.navigate(['/contacts']);
+      });
     }
-
-    this.toolbar.toolbarOptions.next(
-      new ToolbarOptions('Contact', toolbarActions));
   }
 
   onNavigateBack(): void {
     this.router.navigate(['/contacts']);
   }
 
+  // CRUD Operations
   onSave(): void {
     console.log('TODO Save.');
     if (this.contactId == null) {
       // Create contact
+      this.editingEnabled = false;
+      this.contactService.createContact(this.contact).subscribe(response => {
+        console.log(response);
+        this.router.navigate(['/contacts']);
+      });
     } else {
       // Edit contact
+      this.editingEnabled = false;
       this.contactService.updateContact(this.contact).subscribe(response => {
-        console.log(response);
+        this.contact = response;
       });
     }
   }
@@ -72,5 +76,14 @@ export class ContactDetailComponent implements OnInit {
   onEdit(): void {
     console.log('TODO activate/deactivate edit mode.');
     this.editingEnabled = !this.editingEnabled;
+  }
+
+  onDelete(): void {
+    console.log('TODO delete.');
+    this.editingEnabled = false;
+    this.contactService.deleteContact(this.contact).subscribe(() => {
+      this.router.navigate(['/contacts']);
+      console.log('Contact deleted.');
+    });
   }
 }

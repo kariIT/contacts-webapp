@@ -11,6 +11,6 @@ export class ToolbarService {
 
   constructor() {
     this.toolbarOptions = new BehaviorSubject<ToolbarOptions>(
-      new ToolbarOptions('Contacts Application', []));
+      new ToolbarOptions(true, 'Contacts Application', []));
   }
 }

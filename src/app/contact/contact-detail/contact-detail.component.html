@@ -1,9 +1,13 @@
 <mat-card class="cw-card-layout">
+  
+  <mat-card-actions align="end">
+    <!--Delete button-->
+    <button mat-icon-button (click)="onDelete()" *ngIf="editingEnabled">
+      <mat-icon>delete_sweep</mat-icon>
+    </button>
+  </mat-card-actions>
 
-  <button mat-icon-button (click)="onNavigateBack()">
-    <mat-icon class="mat-18">arrow_back</mat-icon>
-  </button>
-
+  <!--Fields-->
   <div fxLayout="row" fxLayoutAlign="center start">
     <div fxLayout="column" class="cw-contact-detail-fields">
       <mat-form-field floatPlaceholder="auto">
@@ -54,6 +58,9 @@
     </div>
   </div>
 </mat-card>
+
+<!--Disable save button-->
 <button mat-fab (click)="onSave()" class="cw-fab" [disabled]="!editingEnabled">
   <mat-icon>check</mat-icon>
 </button>
+
