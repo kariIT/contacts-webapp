@@ -39,6 +39,7 @@ export class ContactDetailComponent implements OnInit {
       // View/Edit contact
       this.editingEnabled = false;
       toolbarActions = [new ToolbarAction(this.onEdit.bind(this), 'edit')];
+
       this.contactService.getContactById(this.contactId).subscribe(response => {
         this.contact = response;
         console.log(this.contact);
@@ -48,15 +49,11 @@ export class ContactDetailComponent implements OnInit {
         this.router.navigate(['/contacts']);
       });
     }
-  }
-
-  onNavigateBack(): void {
-    this.router.navigate(['/contacts']);
+    this.toolbar.setToolbarOptions(new ToolbarOptions(false, 'Contact', toolbarActions));
   }
 
   // CRUD Operations
   onSave(): void {
-    console.log('TODO Save.');
     if (this.contactId == null) {
       // Create contact
       this.editingEnabled = false;
@@ -74,16 +71,28 @@ export class ContactDetailComponent implements OnInit {
   }
 
   onEdit(): void {
-    console.log('TODO activate/deactivate edit mode.');
+    let toolbarActions: ToolbarAction[];
     this.editingEnabled = !this.editingEnabled;
+
+    // Happens when clicking edit button
+    if (this.editingEnabled === true) {
+      // Edit mode on, toggles between:
+      toolbarActions = [
+      new ToolbarAction(this.onDelete.bind(this), 'delete'),
+      new ToolbarAction(this.onEdit.bind(this), 'edit')
+      ];
+    } else {
+      // Edit mode off
+      toolbarActions = [new ToolbarAction(this.onEdit.bind(this), 'edit')];
+    }
+    // Toolbar
+    this.toolbar.setToolbarOptions(new ToolbarOptions(false, 'Contact', toolbarActions));
   }
 
   onDelete(): void {
-    console.log('TODO delete.');
     this.editingEnabled = false;
     this.contactService.deleteContact(this.contact).subscribe(() => {
       this.router.navigate(['/contacts']);
-      console.log('Contact deleted.');
     });
   }
 }

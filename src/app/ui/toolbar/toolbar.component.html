@@ -1,7 +1,11 @@
 <mat-toolbar color="primary">
+  <!--Back button-->
+  <button mat-icon-button *ngIf="!options.backEnabled" (click)="onNavigateBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
 
   <!--Menu button-->
-  <button mat-icon-button (click)="onMenuClick()">
+  <button mat-icon-button *ngIf="options.backEnabled" (click)="onMenuClick()">
     <mat-icon>menu</mat-icon>
   </button>
 
@@ -10,10 +14,4 @@
   <button mat-icon-button (click)="action.runAction()" *ngFor="let action of options.actions">
     <mat-icon>{{action.icon}}</mat-icon>
   </button>
-
-  <!--Back button-->
-  <button mat-icon-button *ngIf="!options.backEnabled" (click)="onNavigateBack()">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-
 </mat-toolbar>

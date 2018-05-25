@@ -19,7 +19,7 @@ export class ContactListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.toolbar.toolbarOptions.next(new ToolbarOptions(true, 'Contacts', []));
+    this.toolbar.setToolbarOptions(new ToolbarOptions(true, 'Contacts', []));
 
     this.contactService.getContacts().subscribe(response => {
       this.contacts = response;
@@ -28,7 +28,6 @@ export class ContactListComponent implements OnInit {
   }
 
   onContactSelect(contact): void {
-    // console.log(contact.id);
     this.router.navigate(['/contacts', contact.id]);
   }
 
