@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiEndpointUrl: 'https://contactswebappjh.azurewebsites.net'
+  apiEndpointUrl: 'https://contactswebapijh.azurewebsites.net'
 };
