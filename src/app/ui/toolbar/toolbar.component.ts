@@ -18,18 +18,16 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*
-    this.toolbar.toolbarOptions.subscribe((options: ToolbarOptions) => {
-      this.options = options;
-    });
-  } */
+
     this.toolbar.getToolbarOptions().subscribe((options: ToolbarOptions) => {
       this.options = options;
     });
   }
+
   onMenuClick() {
     this.MenuClick.emit();
   }
+
   onNavigateBack() {
     this.location.back();
   }
