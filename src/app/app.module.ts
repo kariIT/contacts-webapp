@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   {path: 'contacts/new', component: ContactDetailComponent},
   {path: 'contacts/:id', component: ContactDetailComponent},
   {path: 'login', component: LoginComponent},
-  {path: '', redirectTo: '/contacts', pathMatch: 'full'}
+  {path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({
