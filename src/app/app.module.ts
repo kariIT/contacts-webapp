@@ -19,6 +19,9 @@ import {ToolbarService} from './ui/toolbar/toolbar.service';
 import { LoginComponent } from './user/login/login.component';
 import {AuthenticationService} from './user/services/authentication.service';
 import {TokenService} from './user/services/token.service';
+import { SnackbarComponent } from './ui/snackbar/snackbar.component';
+import {SnackbarService} from './ui/snackbar/snackbar.service';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material';
 
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
@@ -36,6 +39,7 @@ const appRoutes: Routes = [
     TextToColorPipe,
     ToolbarComponent,
     LoginComponent,
+    SnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,7 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     AvatarModule.forRoot(),
     NgPipesModule,
+    MatSnackBarModule
   ],
   providers: [
     ContactService,
@@ -53,7 +58,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     ToolbarService,
     AuthenticationService,
-    TokenService
+    TokenService,
+    SnackbarService
   ],
   bootstrap: [AppComponent]
 })

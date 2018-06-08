@@ -5,6 +5,7 @@ import {Contact} from '../contact';
 import {ToolbarOptions} from '../../ui/toolbar/toolbar-options';
 import {ToolbarService} from '../../ui/toolbar/toolbar.service';
 import {ToolbarAction} from '../../ui/toolbar/toolbar-action';
+import {MatSnackBar} from '@angular/material';
 
 // import {error} from 'util';
 
@@ -20,7 +21,7 @@ export class ContactDetailComponent implements OnInit {
   contactId: any;
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private contactService: ContactService, private toolbar: ToolbarService) {
+              private contactService: ContactService, private toolbar: ToolbarService, public snackbar: MatSnackBar) {
     this.contact = new Contact();
     this.editingEnabled = true;
   }
@@ -60,12 +61,15 @@ export class ContactDetailComponent implements OnInit {
       this.contactService.createContact(this.contact).subscribe(response => {
         console.log(response);
         this.router.navigate(['/contacts']);
+        this.snackbar.open('Contact created!', 'OK');
       });
     } else {
       // Edit contact
       this.editingEnabled = false;
       this.contactService.updateContact(this.contact).subscribe(response => {
         this.contact = response;
+        this.snackbar.dismiss();
+        this.snackbar.open('Changes saved', 'OK');
       });
     }
   }
@@ -76,6 +80,7 @@ export class ContactDetailComponent implements OnInit {
 
     // Happens when clicking edit button
     if (this.editingEnabled === true) {
+      this.snackbar.open('Editing contact', 'OK');
       // Edit mode on, toggles between:
       toolbarActions = [
       new ToolbarAction(this.onDelete.bind(this), 'delete'),
@@ -84,6 +89,7 @@ export class ContactDetailComponent implements OnInit {
     } else {
       // Edit mode off
       toolbarActions = [new ToolbarAction(this.onEdit.bind(this), 'edit')];
+      this.snackbar.dismiss();
     }
     // Toolbar
     this.toolbar.setToolbarOptions(new ToolbarOptions(false, 'Contact', toolbarActions));
@@ -93,6 +99,8 @@ export class ContactDetailComponent implements OnInit {
     this.editingEnabled = false;
     this.contactService.deleteContact(this.contact).subscribe(() => {
       this.router.navigate(['/contacts']);
+      this.snackbar.dismiss();
+      this.snackbar.open('Contact deleted!', 'OK');
     });
   }
 }

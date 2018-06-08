@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
     this.errorMessage = '';
     this.authenticationService.signInUser(this.userCredentials)
       .subscribe(result => {
-
         this.router.navigate(['/contacts']);
       }, error => {
         this.userCredentials.username = '';
