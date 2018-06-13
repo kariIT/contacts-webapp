@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UserCredentials} from '../user-credentials';
 import {AuthenticationService} from '../services/authentication.service';
 import {Router} from '@angular/router';
+import {ToolbarService} from '../../ui/toolbar/toolbar.service';
+import {ToolbarOptions} from '../../ui/toolbar/toolbar-options';
 
 @Component({
   selector: 'cw-login',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   loginFailed: boolean;
   errorMessage: string;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private authenticationService: AuthenticationService, private router: Router, private toolbar: ToolbarService) {
     this.userCredentials = new UserCredentials();
     this.loginFailed = false;
     this.errorMessage = '';
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authenticationService.signOutUser();
+    this.toolbar.setToolbarOptions(new ToolbarOptions(true, 'Contacts Application', [], true));
   }
 
   onSignIn() {

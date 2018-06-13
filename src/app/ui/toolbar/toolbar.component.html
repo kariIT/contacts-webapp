@@ -1,13 +1,19 @@
 <mat-toolbar color="primary">
-  <!--Back button-->
+  <!--Show buttons-->
+  <span *ngIf="!options.hideButtons">
+    <!--Back button-->
   <button mat-icon-button *ngIf="!options.backEnabled" (click)="onNavigateBack()">
     <mat-icon>arrow_back</mat-icon>
   </button>
 
-  <!--Menu button-->
+    <!--Menu button-->
   <button mat-icon-button *ngIf="options.backEnabled" (click)="onMenuClick()">
     <mat-icon>menu</mat-icon>
   </button>
+  </span>
+
+  <!--Hide buttons-->
+  <span *ngIf="options.hideButtons"></span>
 
   <!--Title-->
   <span fxFlex>{{options.title}}</span>

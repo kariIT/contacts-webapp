@@ -28,7 +28,7 @@ export class ContactDetailComponent implements OnInit {
 
   ngOnInit() {
     this.toolbar.toolbarOptions.next(
-      new ToolbarOptions(false, 'Contact', [new ToolbarAction(this.onEdit.bind(this), 'edit')]));
+      new ToolbarOptions(false, 'Contact', [new ToolbarAction(this.onEdit.bind(this), 'edit')], false));
 
     this.contactId = this.route.snapshot.paramMap.get('id');
     let toolbarActions: ToolbarAction[];
@@ -50,7 +50,7 @@ export class ContactDetailComponent implements OnInit {
         this.router.navigate(['/contacts']);
       });
     }
-    this.toolbar.setToolbarOptions(new ToolbarOptions(false, 'Contact', toolbarActions));
+    this.toolbar.setToolbarOptions(new ToolbarOptions(false, 'Contact', toolbarActions, false));
   }
 
   // CRUD Operations
@@ -92,7 +92,7 @@ export class ContactDetailComponent implements OnInit {
       this.snackbar.dismiss();
     }
     // Toolbar
-    this.toolbar.setToolbarOptions(new ToolbarOptions(false, 'Contact', toolbarActions));
+    this.toolbar.setToolbarOptions(new ToolbarOptions(false, 'Contact', toolbarActions, false));
   }
 
   onDelete(): void {

@@ -21,7 +21,7 @@ import {AuthenticationService} from './user/services/authentication.service';
 import {TokenService} from './user/services/token.service';
 import { SnackbarComponent } from './ui/snackbar/snackbar.component';
 import {SnackbarService} from './ui/snackbar/snackbar.service';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material';
+import {MatIconModule, MatIconRegistry, MatSnackBar, MatSnackBarModule} from '@angular/material';
 
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
@@ -50,7 +50,8 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     AvatarModule.forRoot(),
     NgPipesModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   providers: [
     ContactService,
