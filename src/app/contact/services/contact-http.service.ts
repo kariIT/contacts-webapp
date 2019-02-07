@@ -13,7 +13,7 @@ export class ContactHttpService {
   url: string;
 
   constructor(private httpClient: HttpClient, private tokenService: TokenService) {
-    this.url = environment.apiEndpointUrl + '/api/contacts';
+    this.url = environment.apiEndpointUrl + '/';
   }
 
   get(): Observable<Contact[]> {
