@@ -1,7 +1,6 @@
 {
   "contacts": [
     {
-      "contactId": "api",
       "id": 1,
       "firstName": "Matti",
       "lastName": "Teppo",
@@ -12,7 +11,6 @@
       "emailAddress": "matti@teppo.com"
     },
     {
-      "contactId": "api",
       "id": 2,
       "firstName": "Teppo",
       "lastName": "Matti",
@@ -23,7 +21,6 @@
       "emailAddress": "matti@teppo.com"
     },
     {
-      "contactId": "api",
       "id": 3,
       "firstName": "Esko",
       "lastName": "Erkkilä",
@@ -34,21 +31,21 @@
       "emailAddress": "erkkis@hotmail.com"
     },
     {
-      "firstName": "Erkki",
+      "firstName": "Irmeli",
       "lastName": "Erkkilä",
       "streetAddress": "Katajakatu 22",
       "city": "Mäntsälä",
       "postalCode": "54632",
       "phoneNumber": "050123147",
-      "emailAddress": "ek@gmail.com",
-      "contactId": "api",
+      "emailAddress": "irmis@gmail.com",
       "id": 4
     },
     {
       "firstName": "Heikki",
       "lastName": "Heilimo",
       "postalCode": "",
-      "id": 5
+      "id": 5,
+      "phoneNumber": "0451236548"
     }
   ]
 }
